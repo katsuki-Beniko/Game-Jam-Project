@@ -4,14 +4,15 @@ using TarodevController;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PLayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     private float horizontal;
     private float speed = 8f;
-    private float jumpingPower = 10f;
+    private float jumpingPower = 12f;
     private bool isFacingRight = true;
     private Vector2 moveInputValue;
     private Animator animator;
+    private bool isDead = false; // To track if the player is dead
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -31,6 +32,8 @@ public class PLayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (isDead) return; // Prevent any updates if the player is dead
+
         OnJump();
         Flip();
         HandleJumping();
@@ -40,6 +43,8 @@ public class PLayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDead) return; // Prevent any movement if the player is dead
+
         rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
     }
 
@@ -74,7 +79,6 @@ public class PLayerMovement : MonoBehaviour
         }
     }
 
- 
     private void HandleJumping()
     {
         bool grounded = isGrounded();
@@ -109,15 +113,33 @@ public class PLayerMovement : MonoBehaviour
             animator.SetBool("isIdle", false);
         }
     }
+
     private void HandleDucking()
     {
         if (ducking.IsPressed())
         {
-            animator.Play("Character-Ducking");  // Start jump animation
+            animator.Play("Character-Ducking");  // Start ducking animation
         }
         else if (ducking.WasReleasedThisFrame())
         {
-            animator.SetBool("isDucking", false);  // Stop jump animation
+            animator.SetBool("isDucking", false);  // Stop ducking animation
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Trap"))
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        isDead = true; // Mark the player as dead
+        rb.velocity = Vector2.zero; // Stop the player from moving
+        rb.isKinematic = true; // Make the Rigidbody kinematic so that physics won't affect it anymore
+        animator.Play("Death"); // Play the death animation
+        playerInput.enabled = false; // Disable player input
     }
 }
