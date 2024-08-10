@@ -3,6 +3,7 @@ using UnityEngine;
 public class platformmove : MonoBehaviour
 {
     [SerializeField] private LayerMask groundLayer;
+
     // Reference to the Animator component
     public Animator Sawanimation;
 
@@ -14,7 +15,7 @@ public class platformmove : MonoBehaviour
 
     void Start()
     {
-        // Play the "ActivateTrap" animation when the script starts
+        // Play the "moving-platform-animation" when the script starts
         Sawanimation.Play("moving-platform-animation");
     }
 
@@ -26,11 +27,28 @@ public class platformmove : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if the object collided with a Tilemap that has the "Ground" layer
+        // Check if the object collided with the ground layer
         if (((1 << collision.gameObject.layer) & groundLayer) != 0)
         {
             // Reverse the direction
             direction = -direction;
+        }
+
+        // Check if the player has collided with the platform
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Make the player a child of the platform so it moves with the platform
+            collision.gameObject.transform.SetParent(transform);
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        // Check if the player has exited the platform
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Unparent the player when it leaves the platform
+            collision.gameObject.transform.SetParent(null);
         }
     }
 }
