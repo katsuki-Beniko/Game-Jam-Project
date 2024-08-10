@@ -2,13 +2,31 @@
     "name": "PlayerInput",
     "maps": [
         {
-            "name": "Movements",
+            "name": "PlayerOnGround",
             "id": "4f9fcc5f-2637-45bb-bb39-de9737b83570",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Move",
                     "type": "Button",
                     "id": "0377e62b-12dc-47dc-bc5e-9ee285e46641",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "3aa9a83b-e296-424b-906f-93e43497ff27",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ducking",
+                    "type": "Button",
+                    "id": "ac3ea88f-f423-4629-b74e-2c107ac3c1c6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -23,7 +41,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -34,7 +52,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -45,7 +63,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -53,6 +71,56 @@
                     "name": "",
                     "id": "3f4806d1-7662-4aeb-9a7d-0edaf0d9d596",
                     "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c924d792-c536-4edc-8f48-7388d91bc8b7",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4b7acfc7-9fa0-4491-9fe1-5f1661f1a231",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ducking",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "New action map",
+            "id": "c78ca5c3-dedb-4f68-9e2d-2f69fbb3d0fd",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "9820ebda-bd62-436d-b538-c60953ee8b4f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f9b35fe0-46d5-4484-aa0d-325614323bc7",
+                    "path": "",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
