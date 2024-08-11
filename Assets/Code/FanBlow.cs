@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FanBlow : MonoBehaviour
 {
+    private Animator animator;
     // Force with which the fan will blow the player
     [SerializeField] private float blowForce = 10f;
 
@@ -15,6 +16,18 @@ public class FanBlow : MonoBehaviour
 
     private bool isPlayerInRange = false;
     private Rigidbody2D playerRb;
+
+    private void Awake()
+    {
+        // Get the Animator component attached to this GameObject
+        animator = GetComponent<Animator>();
+
+        // Check if the Animator component is assigned
+        if (animator == null)
+        {
+            Debug.LogError("Animator component is missing on this GameObject.");
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -42,6 +55,7 @@ public class FanBlow : MonoBehaviour
     {
         while (isPlayerInRange)
         {
+            animator.Play("Fan-ani");
             // Apply force in the specified direction
             playerRb.AddForce(blowDirection.normalized * blowForce, ForceMode2D.Force);
 

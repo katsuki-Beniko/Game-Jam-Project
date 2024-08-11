@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;  // For scene management
 using UnityEngine.InputSystem;
+using UnityEngine.UI;  // For UI elements
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,8 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private float climbSpeed = 5f;
 
     private Animator animator;
-    private bool isDead = false; // To track if the player is dead
-    private bool isClimbing = false; // To track if the player is climbing
+    private bool isDead = false;
+    private bool isClimbing = false;
     private bool isFacingRight = true;
 
     [SerializeField] private Rigidbody2D rb;
@@ -24,9 +26,17 @@ public class PlayerMovement : MonoBehaviour
     private InputAction jumpAction;
     private InputAction ducking;
     private InputAction climbAction;
-    private InputAction climbDownAction; // New action for climbing down
-    private InputAction climbRightAction; // New action for climbing right
-    private InputAction climbLeftAction; // New action for climbing left
+    private InputAction climbDownAction;
+    private InputAction climbRightAction;
+    private InputAction climbLeftAction;
+
+    // Audio variables
+    private AudioSource audioSource;
+    public AudioClip steppingSound;  // Reference to the stepping sound
+    public AudioClip deathSound;  // Reference to the death sound
+
+    // UI elements
+    public GameObject deathPanel;  // Panel that contains the death prompt
 
     private void Awake()
     {
@@ -34,17 +44,22 @@ public class PlayerMovement : MonoBehaviour
         jumpAction = playerInput.actions["Jump"];
         ducking = playerInput.actions["Ducking"];
         climbAction = playerInput.actions["Climbing"];
-        climbDownAction = playerInput.actions["Climb down"]; // Assign the climb down action
-        climbRightAction = playerInput.actions["Climb right"]; // Assign the climb right action
-        climbLeftAction = playerInput.actions["Climb left"]; // Assign the climb left action
+        climbDownAction = playerInput.actions["Climb down"];
+        climbRightAction = playerInput.actions["Climb right"];
+        climbLeftAction = playerInput.actions["Climb left"];
 
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();  // Assign the Animator component
+        animator = GetComponent<Animator>();
+
+        audioSource = GetComponent<AudioSource>();  // Get the AudioSource component
+
+        // Ensure the death panel is hidden at the start
+        deathPanel.SetActive(false);
     }
 
     void Update()
     {
-        if (isDead) return; // Prevent any updates if the player is dead
+        if (isDead) return;
 
         if (isClimbing)
         {
@@ -62,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDead) return; // Prevent any movement if the player is dead
+        if (isDead) return;
 
         if (!isClimbing)
         {
@@ -111,28 +126,28 @@ public class PlayerMovement : MonoBehaviour
         if (vertical != 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, vertical * climbSpeed);
-            rb.gravityScale = 0f; // Disable gravity while climbing
+            rb.gravityScale = 0f;
             animator.SetBool("isClimbing", true);
         }
         else if (climbDown != 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, climbDown * climbSpeed * -1); // Climb down
-            rb.gravityScale = 0f; // Disable gravity while climbing down
+            rb.velocity = new Vector2(rb.velocity.x, climbDown * climbSpeed * -1);
+            rb.gravityScale = 0f;
             animator.SetBool("isClimbing", true);
         }
         else if (climbRight != 0f)
         {
-            rb.velocity = new Vector2(climbRight * climbSpeed, rb.velocity.y); // Move right while climbing
+            rb.velocity = new Vector2(climbRight * climbSpeed, rb.velocity.y);
             animator.SetBool("isClimbing", true);
         }
         else if (climbLeft != 0f)
         {
-            rb.velocity = new Vector2(climbLeft * climbSpeed * -1, rb.velocity.y); // Move left while climbing
+            rb.velocity = new Vector2(climbLeft * climbSpeed * -1, rb.velocity.y);
             animator.SetBool("isClimbing", true);
         }
         else
         {
-            rb.velocity = new Vector2(0f, 0f); // Stop all movement
+            rb.velocity = new Vector2(0f, 0f);
             animator.SetBool("isClimbing", false);
         }
     }
@@ -156,10 +171,23 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded() && Mathf.Abs(horizontal) > 0f)
         {
             animator.SetBool("isRunning", true);
+
+            // Play the stepping sound if not already playing
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = steppingSound;
+                audioSource.Play();
+            }
         }
         else
         {
             animator.SetBool("isRunning", false);
+
+            // Stop the stepping sound when not running
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
         }
 
         if (isGrounded() && horizontal == 0f)
@@ -176,11 +204,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (ducking.IsPressed())
         {
-            animator.Play("Character-Ducking");  // Start ducking animation
+            animator.Play("Character-Ducking");
         }
         else if (ducking.WasReleasedThisFrame())
         {
-            animator.SetBool("isDucking", false);  // Stop ducking animation
+            animator.SetBool("isDucking", false);
         }
     }
 
@@ -197,8 +225,8 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("ladder"))
         {
             isClimbing = true;
-            rb.velocity = new Vector2(rb.velocity.x, 0f); // Stop any vertical momentum
-            rb.gravityScale = 0f; // Disable gravity while on the ladder
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
+            rb.gravityScale = 0f;
         }
     }
 
@@ -207,17 +235,25 @@ public class PlayerMovement : MonoBehaviour
         if (other.CompareTag("ladder"))
         {
             isClimbing = false;
-            rb.gravityScale = 1f; // Re-enable gravity when leaving the ladder
-            animator.SetBool("isClimbing", false); // Stop climbing animation
+            rb.gravityScale = 1f;
+            animator.SetBool("isClimbing", false);
         }
     }
 
     private void Die()
     {
-        isDead = true; // Mark the player as dead
-        rb.velocity = Vector2.zero; // Stop the player from moving
-        rb.isKinematic = true; // Make the Rigidbody kinematic so that physics won't affect it anymore
-        animator.Play("Death"); // Play the death animation
-        playerInput.enabled = false; // Disable player input
+        isDead = true;
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true;
+        animator.Play("Death");
+        playerInput.enabled = false;
+        audioSource.Stop(); // Stop any sound effects when the player dies
+        audioSource.PlayOneShot(deathSound);  // Play death sound
+
+        // Activate the death panel to show the prompt
+        deathPanel.SetActive(true);
     }
+
+    // Button methods
+ 
 }

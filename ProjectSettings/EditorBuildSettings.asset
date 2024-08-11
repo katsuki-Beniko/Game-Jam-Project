@@ -6,6 +6,30 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test Ground.unity
+    path: Assets/Scenes/Start Game.unity
+    guid: 7ec9d59305387c64299a249b2406bf2f
+  - enabled: 1
+    path: Assets/Scenes/First Cutscene.unity
+    guid: 7fd73ee259067ac4b9f20f4b6fab6b6e
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/stage1.unity
+    guid: 3894e2fc4f1ea1c45bb143f723621cdf
+  - enabled: 1
+    path: Assets/Scenes/stage2.unity
+    guid: 3e1ccf0366839e5428f178d272ee2add
+  - enabled: 1
+    path: Assets/Scenes/Stage3.unity
+    guid: c6612e1445e031f438afaef14d5b5f58
+  - enabled: 1
+    path: Assets/Scenes/Stage4.unity
+    guid: ecfababf2da6fcc4e9fa0a087f121b52
+  - enabled: 1
+    path: Assets/Scenes/Stage5.unity
+    guid: c3a6ed55d69e44740b3b8e6d5e296145
+  - enabled: 1
+    path: Assets/Scenes/Last Cutscene.unity
+    guid: 0670ff13958c59e42b8a986e950989f9
   m_configObjects: {}

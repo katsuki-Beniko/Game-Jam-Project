@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Trap
   - ladder
+  - door
   layers:
   - Default
   - TransparentFX
