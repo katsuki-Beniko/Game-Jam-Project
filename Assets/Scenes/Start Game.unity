@@ -395,7 +395,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: eced1f6daa15e264dba46a2c9704c721, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.632
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -595,10 +595,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -678,15 +678,15 @@ RectTransform:
   m_GameObject: {fileID: 1919501690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.3905, y: 7.3905, z: 7.3905}
+  m_LocalScale: {x: 1.9898775, y: 1.9898775, z: 1.9898775}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1403126445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00024414062, y: 431.99994}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: 394}
+  m_SizeDelta: {x: 782.4, y: 150.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1919501692
 MonoBehaviour:
@@ -709,8 +709,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_Font: {fileID: 12800000, guid: d8bb31d7026f7fc4ca9fed60cc4a2d47, type: 3}
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -721,9 +721,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Escape Dungeon
-
-'
+  m_Text: Dungeonscape
 --- !u!222 &1919501693
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -753,12 +751,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_Font: {fileID: 12800000, guid: d8bb31d7026f7fc4ca9fed60cc4a2d47, type: 3}
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
+    m_MinSize: 1
+    m_MaxSize: 100
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -846,15 +844,15 @@ RectTransform:
   m_GameObject: {fileID: 3396284370309336545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10.677423, y: 10.677423, z: 10.677423}
+  m_LocalScale: {x: 1.9578944, y: 1.9578944, z: 1.9578944}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1403126445}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00024414, y: -848}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 95, y: -781}
+  m_SizeDelta: {x: 1194.4, y: 128.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &8602688321205593927
 Animator:

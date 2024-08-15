@@ -10,8 +10,6 @@ public class Cutscene : MonoBehaviour
     public InputActionReference startAction;  // Reference to the input action for progressing the cutscene
 
     [Header("Cutscene Settings")]
-    public string[] pictureNames;
-    public Texture2D[] newPictures; // Names of the pictures to load from the "frame" folder
     public int[] textsPerPicture;             // Number of texts needed to pass before switching to each picture
     public string[] dialogTexts;              // Array of all dialog texts in the cutscene
     public string scenetogo;
@@ -48,18 +46,18 @@ public class Cutscene : MonoBehaviour
 
     private void LoadPictures()
     {
-        pictures = new Texture2D[pictureNames.Length];
+        pictures = new Texture2D[pictures.Length];
 
-        for (int i = 0; i < pictureNames.Length; i++)
+        for (int i = 0; i < pictures.Length; i++)
         {
             // Load the texture from the "Assets/frame" folder using AssetDatabase
-            string assetPath = "/frame/" + pictureNames[i];
+            string assetPath = "/frame/" + pictures[i];
             //Texture2D texture = AssetDatabase.LoadAssetAtPath<Texture2D>(assetPath);
             Texture2D texture = Resources.Load<Texture2D>(assetPath);
 
             if (texture == null)
             {
-                Debug.LogError("Could not find picture: " + pictureNames[i]);
+                Debug.LogError("Could not find picture: " + pictures[i]);
                 continue;
             }
 

@@ -1445,7 +1445,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7257765435633557177, guid: 627be34d74d56254db376b0a10d778af, type: 3}
       propertyPath: jumpForce
-      value: 15
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8729744380584712754, guid: 627be34d74d56254db376b0a10d778af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1677,7 +1677,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 47930aac9dc23734fa50af95ab6a4103, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.654
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -27022,6 +27022,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: deathPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 1164743453190124028, guid: 5ae1271c4692ee84095dcf2436f489fe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1189799041840714501, guid: 5ae1271c4692ee84095dcf2436f489fe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 12fe8730d122c1944acd3f7dfa2f59db, type: 3}
+    - target: {fileID: 1189799041840714501, guid: 5ae1271c4692ee84095dcf2436f489fe, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1429399066481241417, guid: 5ae1271c4692ee84095dcf2436f489fe, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -27102,10 +27114,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7496017499943355807, guid: 5ae1271c4692ee84095dcf2436f489fe, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496017499943355807, guid: 5ae1271c4692ee84095dcf2436f489fe, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 3840
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496017499943355807, guid: 5ae1271c4692ee84095dcf2436f489fe, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 2160
+      objectReference: {fileID: 0}
     - target: {fileID: 8100402662601929389, guid: 5ae1271c4692ee84095dcf2436f489fe, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1419526820}
+    - target: {fileID: 8100402662601929389, guid: 5ae1271c4692ee84095dcf2436f489fe, type: 3}
+      propertyPath: m_SortingOrder
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -27837,7 +27865,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16

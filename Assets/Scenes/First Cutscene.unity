@@ -162,11 +162,11 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: d8bb31d7026f7fc4ca9fed60cc4a2d47, type: 3}
-    m_FontSize: 16
+    m_FontSize: 110
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
+    m_MaxSize: 110
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -191,15 +191,15 @@ RectTransform:
   m_GameObject: {fileID: 16774794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7.456122, y: 7.456122, z: 7.456122}
+  m_LocalScale: {x: 1.0826347, y: 1.0826347, z: 1.0826347}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 637326029}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 53.999985, y: -643.68}
-  m_SizeDelta: {x: 270.2, y: 80.2}
+  m_AnchoredPosition: {x: 41.8, y: -643.67993}
+  m_SizeDelta: {x: 1597.4, y: 579.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &71517077
 GameObject:
@@ -516,10 +516,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 3840, y: 2160}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -736,14 +736,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startAction: {fileID: 6280817336686273495, guid: 3425335617c94d048b3c9925345f47c9, type: 3}
-  pictureNames:
-  - Story picture 1
-  - Story picture 2
-  - Story picture 3
-  - Story picture 4
-  - Story picture 5
-  - Story picture 6
-  newPictures: []
   textsPerPicture: 010000000100000001000000010000000100000001000000
   dialogTexts:
   - 'As sunset approaches, Lim wants to explore and discover new places for camping. '
